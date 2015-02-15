@@ -2,8 +2,13 @@ package com.millstein.mark.splitmybills;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.millstein.mark.splitmybills.math.Algorithms;
+import com.millstein.mark.splitmybills.math.Triple;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +17,17 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        Triple result = Algorithms.extendedEuclid(5, 1);
+        Log.v("blah", result.toString());
+        String out = "";
+        for(int i = 1; i < 4; i++) {
+            out += result.toString() + "\n";
+            result = Algorithms.generateNewGCDSolution(1, 5, i, result);
+        }
+
+        TextView textView = (TextView) findViewById(R.id.myTextView);
+        textView.setText(out);
     }
 
 
