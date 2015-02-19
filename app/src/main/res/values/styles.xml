@@ -1,8 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AddPersonBillTextView">
+        <item name="android:layout_column">0</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+
+    <style name="AddPersonBillEditText">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">number</item>
+        <item name="android:layout_column">1</item>
+        <item name="android:ems">10</item>
+        <item name="android:text">0</item>
     </style>
 
 </resources>

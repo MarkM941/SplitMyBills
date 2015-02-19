@@ -4,15 +4,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 
 
 public class AddPerson extends ActionBarActivity {
+
+    private final String LOG_TAG = this.getClass().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,6 @@ public class AddPerson extends ActionBarActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -35,17 +38,22 @@ public class AddPerson extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void submitPerson(View view) {
+        final String name = ((EditText) findViewById(R.id.addPersonName)).getText().toString();
+        Log.v(LOG_TAG, name);
+
+        final int singles = Integer.valueOf(((EditText) findViewById(R.id.addPersonSingles)).getText().toString());
+        final int fives = Integer.valueOf(((EditText) findViewById(R.id.addPersonFives)).getText().toString());
+        final int tens = Integer.valueOf(((EditText) findViewById(R.id.addPersonTens)).getText().toString());
+        final int twenties = Integer.valueOf(((EditText) findViewById(R.id.addPersonTwenties)).getText().toString());
+        final int fifties = Integer.valueOf(((EditText) findViewById(R.id.addPersonFifties)).getText().toString());
+        final int hundreds = Integer.valueOf(((EditText) findViewById(R.id.addPersonHundreds)).getText().toString());
+
+        Person person = new Person(name, singles, fives, tens, twenties, fifties, hundreds);
+        this.finish();
     }
 
     /**

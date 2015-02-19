@@ -7,5 +7,14 @@
     <string name="title_activity_main">SplitMyBills</string>
     <string name="action_add_person">Add Person</string>
     <string name="title_activity_add_person">AddPerson</string>
+    <string name="add_person_form_person_name">Person Name:</string>
+    <string name="add_person_form_edit_text">Name</string>
+    <string name="first_bill">Singles</string>
+    <string name="second_bill">Fives</string>
+    <string name="third_bill">Tens</string>
+    <string name="fourth_bill">Twenties</string>
+    <string name="fifth_bill">Fifties</string>
+    <string name="sixth_bill">Hundreds</string>
+    <string name="finish_button">Finish</string>
 
 </resources>
