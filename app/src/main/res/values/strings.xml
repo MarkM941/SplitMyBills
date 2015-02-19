@@ -4,5 +4,8 @@
     <string name="app_name">SplitMyBills</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_main">SplitMyBills</string>
+    <string name="action_add_person">Add Person</string>
+    <string name="title_activity_add_person">AddPerson</string>
 
 </resources>
