@@ -43,7 +43,6 @@ public class AddPerson extends ActionBarActivity {
 
     public void submitPerson(View view) {
         final String name = ((EditText) findViewById(R.id.addPersonName)).getText().toString();
-        Log.v(LOG_TAG, name);
 
         final int singles = Integer.valueOf(((EditText) findViewById(R.id.addPersonSingles)).getText().toString());
         final int fives = Integer.valueOf(((EditText) findViewById(R.id.addPersonFives)).getText().toString());
