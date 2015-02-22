@@ -16,28 +16,23 @@ public class Person {
         return name;
     }
 
-    public int getSingles() {
-        return singles;
-    }
-
-    public int getFives() {
-        return fives;
-    }
-
-    public int getTens() {
-        return tens;
-    }
-
-    public int getTwenties() {
-        return twenties;
-    }
-
-    public int getFifties() {
-        return fifties;
-    }
-
-    public int getHundreds() {
-        return hundreds;
+    public int getBillCount(int pBill) {
+        switch (pBill) {
+            case 0:
+                return singles;
+            case 1:
+                return fives;
+            case 2:
+                return tens;
+            case 3:
+                return twenties;
+            case 4:
+                return fifties;
+            case 5:
+                return hundreds;
+            default:
+                throw new RuntimeException("Tried getting bill count for unknown bill");
+        }
     }
 
     public Person(String name, int singles, int fives, int tens, int twenties, int fifties, int hundreds) {

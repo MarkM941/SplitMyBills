@@ -16,17 +16,10 @@ import android.widget.EditText;
 
 public class AddPerson extends ActionBarActivity {
 
-    private final String LOG_TAG = this.getClass().getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
     }
 
     @Override
@@ -53,21 +46,5 @@ public class AddPerson extends ActionBarActivity {
 
         Person person = new Person(name, singles, fives, tens, twenties, fifties, hundreds);
         this.finish();
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_add_person, container, false);
-            return rootView;
-        }
     }
 }
