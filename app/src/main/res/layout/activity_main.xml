@@ -6,7 +6,7 @@
     tools:context="com.millstein.mark.splitmybills.MainActivity"
     android:baselineAligned="false">
 
-    <ExpandableListView
+    <com.idunnololz.widgets.AnimatedExpandableListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/personExpandableList"/>

@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
 
+import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.millstein.mark.splitmybills.R;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.Map;
 public class MainActivity extends ActionBarActivity {
 
     ExpandableListAdaptor listAdapter;
-    ExpandableListView expListView;
+    AnimatedExpandableListView listView;
     List<Person> personList;
 
     @Override
@@ -43,19 +44,30 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.personExpandableList);
+        listView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
 
         // preparing list data
         personList = new ArrayList<>();
         listAdapter = new ExpandableListAdaptor(this, personList);
 
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
+        listView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
+        listView.setAdapter(listAdapter);
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
-        //
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                if (listView.isGroupExpanded(groupPosition)) {
+                    listView.collapseGroupWithAnimation(groupPosition);
+                } else {
+                    listView.expandGroupWithAnimation(groupPosition);
+                }
+                return true;
+            }
+
+        });
+
         LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
         setupKeyboardHiding(mainLayout);
-
     }
 
     private void setupKeyboardHiding(View pView) {
@@ -102,11 +114,11 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
 
-//                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                        // Canceled.
-//                    }
-//                });
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
 
                 alert.show();
 

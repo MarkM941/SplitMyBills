@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnimatedExpandableListView/AnimatedExpandableListView.iml" filepath="$PROJECT_DIR$/AnimatedExpandableListView/AnimatedExpandableListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/SplitMyBills.iml" filepath="$PROJECT_DIR$/SplitMyBills.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
