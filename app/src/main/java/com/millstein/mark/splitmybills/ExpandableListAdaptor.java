@@ -2,15 +2,13 @@ package com.millstein.mark.splitmybills;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.idunnololz.widgets.AnimatedExpandableListView;
 
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
     public ExpandableListAdaptor(Context context, List<Person> personList) {
         this.context = context;
 
-        this.bills = new String[] { context.getString(R.string.first_bill),
+        this.bills = new String[]{context.getString(R.string.first_bill),
                 context.getString(R.string.second_bill),
                 context.getString(R.string.third_bill),
                 context.getString(R.string.fourth_bill),
@@ -55,8 +53,8 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
     }
 
     @Override
-    public View getRealChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        if(convertView == null) {
+    public View getRealChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_child, null);
         }
@@ -66,9 +64,28 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
         textView.setText(bills[childPosition]);
 
         EditText editText = (EditText) convertView.findViewById(R.id.listChildEditText);
+        editText.setSelectAllOnFocus(true);
         editText.setText(String.valueOf(this.personList.get(groupPosition).getBillCount(childPosition)));
 
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            public void afterTextChanged(Editable s) {
+                String val = s.toString();
+                setChildText(groupPosition, childPosition, val);
+            }
+        });
+
         return convertView;
+    }
+
+    private void setChildText(int groupPosition, int childPosition, String pNewText) {
+        Person person = (Person) getGroup(groupPosition);
+        person.setBillValue(childPosition, Integer.valueOf(pNewText));
     }
 
     @Override
@@ -98,7 +115,7 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
                              ViewGroup parent) {
 
 
-        if(convertView == null) {
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_group, null);
         }

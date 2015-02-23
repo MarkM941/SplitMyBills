@@ -35,6 +35,31 @@ public class Person {
         }
     }
 
+    public void setBillValue(int pBill, int pVal) {
+        switch (pBill) {
+            case 0:
+                singles = pVal;
+                break;
+            case 1:
+                fives = pVal;
+                break;
+            case 2:
+                tens = pVal;
+                break;
+            case 3:
+                twenties = pVal;
+                break;
+            case 4:
+                fifties = pVal;
+                break;
+            case 5:
+                hundreds = pVal;
+                break;
+            default:
+                throw new RuntimeException("Tried setting bill count for unknown bill");
+        }
+    }
+
     public Person(String name, int singles, int fives, int tens, int twenties, int fifties, int hundreds) {
         this.name = name;
         this.singles = singles;

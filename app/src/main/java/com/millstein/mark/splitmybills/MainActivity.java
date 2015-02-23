@@ -3,39 +3,25 @@ package com.millstein.mark.splitmybills;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SimpleExpandableListAdapter;
-
-import com.idunnololz.widgets.AnimatedExpandableListView;
-import com.millstein.mark.splitmybills.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
 
     ExpandableListAdaptor listAdapter;
-    AnimatedExpandableListView listView;
+    AnimatedExpandableListView expandableListView;
     List<Person> personList;
 
     @Override
@@ -44,23 +30,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // get the listview
-        listView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
+        expandableListView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
 
         // preparing list data
         personList = new ArrayList<>();
-        personList.add(new Person("Mark", 1, 2, 3, 4, 5, 6));
+        personList.add(new Person("Mark", 0, 0, 0, 0, 0, 0));
         listAdapter = new ExpandableListAdaptor(this, personList);
 
-        listView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
-        listView.setAdapter(listAdapter);
-        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        expandableListView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
+        expandableListView.setAdapter(listAdapter);
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                if (listView.isGroupExpanded(groupPosition)) {
-                    listView.collapseGroupWithAnimation(groupPosition);
+                if (expandableListView.isGroupExpanded(groupPosition)) {
+                    expandableListView.collapseGroupWithAnimation(groupPosition);
                 } else {
-                    listView.expandGroupWithAnimation(groupPosition);
+                    expandableListView.expandGroupWithAnimation(groupPosition);
                 }
                 return true;
             }
