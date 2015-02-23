@@ -112,7 +112,7 @@ public class MainActivity extends ActionBarActivity {
     
     public void actionSplitBillButtonPressed(View pView) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Person Name");
+        alert.setTitle("App Output");
         alert.setMessage("This is where the output will be");
 
         alert.setPositiveButton("Ok", null);
