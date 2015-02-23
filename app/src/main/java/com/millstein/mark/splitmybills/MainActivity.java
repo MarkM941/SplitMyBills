@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
 
         // preparing list data
         personList = new ArrayList<>();
+        personList.add(new Person("Mark", 1, 2, 3, 4, 5, 6));
         listAdapter = new ExpandableListAdaptor(this, personList);
 
         listView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
