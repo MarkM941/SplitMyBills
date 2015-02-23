@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_submit_calculate"
             android:id="@+id/button_submit_calculate"
+            android:onClick="actionSplitBillButtonPressed"
             android:layout_gravity="center_horizontal" />
         </LinearLayout>
 </LinearLayout>

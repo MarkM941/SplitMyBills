@@ -79,7 +79,6 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -101,11 +100,7 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
 
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // Canceled.
-                    }
-                });
+                alert.setNegativeButton("Cancel", null);
 
                 alert.show();
 
@@ -113,5 +108,16 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    
+    public void actionSplitBillButtonPressed(View pView) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Person Name");
+        alert.setMessage("This is where the output will be");
+
+        alert.setPositiveButton("Ok", null);
+        // TODO: Add styles to the button to make it look better
+        
+        alert.show();
     }
 }
