@@ -2,8 +2,6 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
-/.idea/InspectionProfiles
 .DS_Store
 /build
 /app/build
-/AnimatedExpandableListView/build
