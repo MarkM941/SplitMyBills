@@ -6,8 +6,8 @@ Credit for the animation on the list views goes to <a href=https://github.com/id
 APK located in:
 /app/build/outputs/apk
 
-To Do:
-    - Add delete button for people
-    - Determine exactly how I wan the output displayed
-    - Add individual amounts for each person
-    - Actually implement the splitting
+#To Do:
+- Add delete button for people
+- Determine exactly how I wan the output displayed
+- Add individual amounts for each person
+- Actually implement the splitting
