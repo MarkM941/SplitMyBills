@@ -24,12 +24,25 @@
         android:layout_height="fill_parent"
         android:layout_weight="1">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_action_previous_item"
+            android:id="@+id/child_button_minus"/>
+        
         <EditText
             style="@style/AddPersonBillEditText"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:id="@+id/listChildEditText"
             android:layout_gravity="center_vertical" />
+        
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_action_next_item"
+            android:id="@+id/child_button_plus"/>
+        
     </LinearLayout>
 
 

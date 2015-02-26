@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,9 +62,11 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
         }
 
 
+        // TextView Setup
         TextView textView = (TextView) convertView.findViewById(R.id.listChildName);
         textView.setText(bills[childPosition]);
 
+        // EditText Setup
         EditText editText = (EditText) convertView.findViewById(R.id.listChildEditText);
         editText.setText(String.valueOf(this.personList.get(groupPosition).getBillCount(childPosition)));
         editText.setSelectAllOnFocus(true);
@@ -79,8 +83,32 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
                 setChildText(groupPosition, childPosition, val);
             }
         });
+        
+        // Arrow buttons setup
+        Button minusButton = (Button) convertView.findViewById(R.id.child_button_minus);
+        Button plusButton = (Button) convertView.findViewById(R.id.child_button_plus);
+        
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adjustChildText(groupPosition, childPosition, -1);
+            }
+        });
+
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adjustChildText(groupPosition, childPosition, 1);
+            }
+        });
 
         return convertView;
+    }
+    
+    private void adjustChildText(int groupPosition, int childPosition, int pVal) {
+        Person person = (Person) getGroup(groupPosition);
+        person.setBillValue(childPosition, person.getBillCount(childPosition) + pVal);
+        notifyDataSetChanged();
     }
 
     private void setChildText(int groupPosition, int childPosition, String pNewText) {

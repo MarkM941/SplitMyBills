@@ -36,6 +36,7 @@ public class Person {
     }
 
     public void setBillValue(int pBill, int pVal) {
+        pVal = (pVal <= 0) ? 0 : pVal;
         switch (pBill) {
             case 0:
                 singles = pVal;
