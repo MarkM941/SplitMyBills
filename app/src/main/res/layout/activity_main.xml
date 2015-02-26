@@ -22,8 +22,9 @@
 
         <EditText
             android:layout_width="100dp"
-            android:inputType="number"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:inputType="numberDecimal"
+            android:id="@+id/bill_amount_text" />
 
     </LinearLayout>
 

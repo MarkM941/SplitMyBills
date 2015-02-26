@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -23,16 +25,15 @@ public class MainActivity extends Activity {
     ExpandableListAdaptor listAdapter;
     AnimatedExpandableListView expandableListView;
     List<Person> personList;
+    float billAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // get the listview
         expandableListView = (AnimatedExpandableListView) findViewById(R.id.personExpandableList);
 
-        // preparing list data
         personList = new ArrayList<>();
         personList.add(new Person("Mark", 0, 0, 0, 0, 0, 0));
         listAdapter = new ExpandableListAdaptor(this, personList);
@@ -51,6 +52,25 @@ public class MainActivity extends Activity {
                 return true;
             }
 
+        });
+        
+        final EditText billAmountEditText = (EditText) findViewById(R.id.bill_amount_text);
+        billAmountEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = s.toString();
+                billAmount = (text.equals("")) ? 0 : Float.valueOf(text);
+            }
         });
 
         LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);

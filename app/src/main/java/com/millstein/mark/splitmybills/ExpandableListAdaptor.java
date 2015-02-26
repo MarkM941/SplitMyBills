@@ -64,8 +64,8 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
         textView.setText(bills[childPosition]);
 
         EditText editText = (EditText) convertView.findViewById(R.id.listChildEditText);
-        editText.setSelectAllOnFocus(true);
         editText.setText(String.valueOf(this.personList.get(groupPosition).getBillCount(childPosition)));
+        editText.setSelectAllOnFocus(true);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,7 +85,8 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
 
     private void setChildText(int groupPosition, int childPosition, String pNewText) {
         Person person = (Person) getGroup(groupPosition);
-        person.setBillValue(childPosition, Integer.valueOf(pNewText));
+        int val = (pNewText.equals("")) ? 0 : Integer.valueOf(pNewText);
+        person.setBillValue(childPosition, val);
     }
 
     @Override
