@@ -1,11 +1,14 @@
 package com.millstein.mark.splitmybills;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -73,32 +76,63 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             public void afterTextChanged(Editable s) {
                 String val = s.toString();
                 setChildText(groupPosition, childPosition, val);
             }
         });
-        
+
         // Arrow buttons setup
-        Button minusButton = (Button) convertView.findViewById(R.id.child_button_minus);
-        Button plusButton = (Button) convertView.findViewById(R.id.child_button_plus);
-        
-        minusButton.setOnClickListener(new View.OnClickListener() {
+        final Button minusButton = (Button) convertView.findViewById(R.id.child_button_minus);
+        final Button plusButton = (Button) convertView.findViewById(R.id.child_button_plus);
+        plusButton.setBackground(plusButton.getContext().getResources().getDrawable(R.drawable.ic_action_next_item));
+        minusButton.setBackground(plusButton.getContext().getResources().getDrawable(R.drawable.ic_action_previous_item));
+
+
+        minusButton.setOnTouchListener(new View.OnTouchListener() {
+            
+            Drawable defaultDrawable = minusButton.getBackground();
+            
             @Override
-            public void onClick(View v) {
-                adjustChildText(groupPosition, childPosition, -1);
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getActionMasked()){
+                    case MotionEvent.ACTION_UP:
+                        minusButton.setBackground(defaultDrawable);
+                        notifyDataSetChanged();
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        adjustChildText(groupPosition, childPosition, -1);
+                        minusButton.setBackgroundColor(Color.GRAY);
+                        break;
+                }
+                return true;
             }
         });
 
-        plusButton.setOnClickListener(new View.OnClickListener() {
+        plusButton.setOnTouchListener(new View.OnTouchListener() {
+
+            Drawable defaultDrawable = plusButton.getBackground();
+
             @Override
-            public void onClick(View v) {
-                adjustChildText(groupPosition, childPosition, 1);
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getActionMasked()){
+                    case MotionEvent.ACTION_UP:
+                        plusButton.setBackground(defaultDrawable);
+                        notifyDataSetChanged();
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        adjustChildText(groupPosition, childPosition, 1);
+                        plusButton.setBackgroundColor(Color.GRAY);
+                        break;
+                }
+                return true;
             }
         });
 
@@ -108,7 +142,6 @@ public class ExpandableListAdaptor extends AnimatedExpandableListView.AnimatedEx
     private void adjustChildText(int groupPosition, int childPosition, int pVal) {
         Person person = (Person) getGroup(groupPosition);
         person.setBillValue(childPosition, person.getBillCount(childPosition) + pVal);
-        notifyDataSetChanged();
     }
 
     private void setChildText(int groupPosition, int childPosition, String pNewText) {
