@@ -1,9 +1,9 @@
 package com.millstein.mark.splitmybills;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     ExpandableListAdaptor listAdapter;
     AnimatedExpandableListView expandableListView;
@@ -116,8 +116,7 @@ public class MainActivity extends ActionBarActivity {
         alert.setMessage("This is where the output will be");
 
         alert.setPositiveButton("Ok", null);
-        // TODO: Add styles to the button to make it look better
-        
+
         alert.show();
     }
 }

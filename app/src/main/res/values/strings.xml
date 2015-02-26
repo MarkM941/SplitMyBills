@@ -17,5 +17,6 @@
     <string name="sixth_bill">Hundreds</string>
     <string name="finish_button">Finish</string>
     <string name="button_submit_calculate">Split Bill!</string>
+    <string name="bill_text_view">Bill Amount:</string>
 
 </resources>

@@ -8,21 +8,56 @@
     android:baselineAligned="false">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_weight="1">
-        <com.millstein.mark.splitmybills.AnimatedExpandableListView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/personExpandableList"/>
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bill_text_view"
+            android:layout_gravity="center_vertical" />
+
+        <EditText
+            android:layout_width="100dp"
+            android:inputType="number"
+            android:layout_height="fill_parent" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/horizontal_rule" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="10"
+        android:layout_weight="1">
+
+        <com.millstein.mark.splitmybills.AnimatedExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/personExpandableList" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/horizontal_rule" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="5"
         android:orientation="vertical">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,5 +65,5 @@
             android:id="@+id/button_submit_calculate"
             android:onClick="actionSplitBillButtonPressed"
             android:layout_gravity="center_horizontal" />
-        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
