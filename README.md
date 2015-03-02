@@ -9,5 +9,6 @@ APK located in:
 #To Do:
 - Add delete button for people
 - Determine exactly how I wan the output displayed
-- Add individual amounts for each person
+- Add individual payment amounts for each person
 - Actually implement the splitting
+- Redesign layout of app
